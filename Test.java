@@ -12,9 +12,10 @@ import java.util.LinkedHashMap;
 public class Test {
     public static void main (String args[]) {
         
-        int tryCnt = 10000000;
+        int tryCntAsCnt = 50;
+        int tryCnt = tryCntAsCnt * 20;
 
-        BigDecimal money = new BigDecimal(((tryCnt / 20) * 2000) * -1);
+        BigDecimal money = new BigDecimal((tryCntAsCnt * 2000) * -1);
 
         DecimalFormat moneyFormat = new DecimalFormat("#,###");
         
@@ -119,14 +120,14 @@ public class Test {
             BigDecimal nowGetMoney = earnMonBig.multiply(cntMapBig);
             earnMoney = earnMoney.add(nowGetMoney);
             String moneyPrintIn = moneyFormat.format(nowGetMoney);
-            System.out.println(", 얻은 돈 : " + moneyPrintIn + "\t, 원래 숫자 " + nowGetMoney);
+            System.out.println(",\t\b\b 얻은 돈 : " + moneyPrintIn + "    ,\t\b\b 횟수 : " + cntMap.get(ele));
             moneyList.set(0, earnMoney);
         });
 
         moneyPrint = moneyFormat.format(moneyList.get(0));
         String allMoney = moneyFormat.format(money.add(moneyList.get(0)));
 
-        System.out.println("\n\n ------- 딴 돈 : " + moneyPrint + "  ------ \n        총 소득 : " + allMoney + "\n\n 총 횟수");
+        System.out.println("\n ------- 딴 돈 : " + moneyPrint + "  ------ \n        총 소득 : " + allMoney + "\n\n 총 횟수");
         System.out.println(sortedMap);
         
             
@@ -166,7 +167,6 @@ public class Test {
             winMoney = 0;
             System.out.println(lst + " : Out of moneyTable!");
         }
-        System.out.print(", winMoney : " + winMoney + ", moneyCode : " + moneyCode);
         return winMoney;
     }
 }
